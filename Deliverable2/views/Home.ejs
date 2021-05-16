@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .bg {
+            background-image: url("images/bg2.png");
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+
+        }
+
+        .p1 {
+            color: white;
+            font-size: 2em;
+        }
+
+        span {
+            float: right;
+            font-size: 1.5em;
+            word-spacing: 1em;
+            margin-right: 5em;
+            margin-top: 1em;
+            color: white;
+        }
+
+        a {
+            color: rgb(69, 143, 69);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: rgb(69, 143, 69);
+            background-color: transparent;
+            text-decoration: none;
+
+        }
+
+        a:hover {
+            color: rgb(127, 182, 150);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        div {
+            color: white;
+            padding: 10em;
+            text-align: center;
+            margin-left: 1em;
+            margin-right: 0.5em;
+            margin-top: 4em;
+        }
+
+        legend {
+            border-color: white 1px solid;
+
+        }
+
+        h1 {
+            font-size: 3em;
+            color: rgb(10, 129, 158);
+            margin-bottom: 1em;
+
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: rgb(21, 165, 129);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="bg">
+    <header>
+
+        <span>
+            <a href="home">Home</a>   
+           <% if((udata==null||udata=="")&&(usertype!="employee")){
+            %> <a href="register">Registration</a> <%
+            } %>
+            <a href="products">products</a>
+            <a href="aboutus">AboutUs</a>
+            <%
+            if(udata!=null&&udata!=""){
+                 %>     <a href="logoutme">Logout</a> <%    
+            }else{
+                  %> <a href="login">Login</a> <%
+            }
+            %> 
+        </span>
+
+    </header>
+    <div>
+        <fieldset>
+            <legend>
+                <h1>House Store</h1>
+            </legend>
+            <p>
+            <h2>We Provide you the Best Item that fits to your House Look.</h2><br>
+            </p>
+        </fieldset>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script>
+       let app = new Vue({
+    el: '#prod',
+    data: {
+        productName: '',
+        productVendor: '',
+        productPrice: '',
+        selectedVendorId: '',
+        vendors: ''
+    },
+    methods: {
+        addProduct() {
+            axios.post('/api/products', {
+                name: this.productName,
+                vendor: this.productVendor,
+                price: this.productPrice,
+                vendorId: this.selectedVendorId
+            })
+                .then((product) => {
+                    window.alert("Product added to the list successfully.")
+                }).catch((err)=>{
+                    window.alert('Error in adding Product : '+product.name+" to the list.")
+                })
+        }
+    },
+    created() {
+        axios.get('/api/vendors')
+            .then((vendorList) => {
+                console.log('hello')
+                this.vendors = vendorList.data
+                console.log(vendorList.length)
+            })
+    }
+}
+) 
+    </script>
+    <title>Add Product</title>
+</head>
+
+<body>
+    <header class="cl-header">
+        <div>
+            <img src="https://yt3.ggpht.com/a-/AJLlDp30v0RfIz5_jQLmwdaACkL2VYeOwRCzFvG7kg=s900-mo-c-c0xffffffff-rj-k-no" alt="logo" class="cl-logo"
+            />
+            <h3 class="cl-company-name">
+                <b>House Store</b>
+            </h3>
+            <nav class="cl-nav">
+                <ul>
+                    <li>
+                        <a href="./dashboard.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="showCart.html">
+                            Show Cart
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <center>
+        <br/><br/>
+        <h2 class="heading">Add New Product</h2>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form id="prod">
+                        <div class="form-group">
+                            <label for="productName">
+                                <b style="color:wheat;font-size: 20px">Product Name : </b>
+                            </label>
+                            <input type="text" id="productName" v-model="productName" placeholder="Enter Product Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productVendor">
+                                <b style="color:wheat;font-size: 20px">Product Vendor : </b>
+                            </label>
+                            <select v-model="selectedVendorId">
+                                <option disabled value="">
+                                    <b>Select Vender Name</b>
+                                </option>
+                                <option v-for="vendor in vendors" v-bind:value="vendor.id">
+                                    {{vendor.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productPrice">
+                                <b style="color:wheat;font-size: 20px">Product Price : </b>
+                            </label>
+                            <input type="number" id="productPrice" v-model="productPrice" placeholder="Enter Product Price">
+                        </div>
+
+                        <button v-on:click="addProduct" class="btn">
+                            <b>Add</b>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+
+        </script>
+    </center>
+    <script src="./addProduct.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>About US</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            
+        }
+
+        .bg {
+            background-image: url("images/bg2.png");
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+
+        }
+
+        .p1 {
+            color: white;
+            font-size: 2em;
+        }
+
+        span {
+            float: right;
+            font-size: 1.5em;
+            word-spacing: 1em;
+            margin-right: 5em;
+            margin-top: 1em;
+            color: white;
+        }
+
+        a {
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a :link {
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: rgb(69, 143, 69);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: rgb(69, 143, 69);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .b2 {
+            border-radius: 50%;
+            width: 6em;
+            height: 3em;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            padding: 3em;
+            color: white;
+
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: rgb(10, 129, 158);
+            text-align: center;
+        }
+
+        div {
+            color: rgb(21, 165, 129);
+            margin-left: 20em;
+            margin-right: 20em;
+            font-size: 1.4em;
+        }
+    </style>
+</head>
+
+<body class="bg">
+    <header>
+
+        <span>
+            <a href="home">Home</a>
+            <% if((udata==null||udata=="")&&(usertype!="employee")){
+                %> <a href="register">Registration</a> <%
+                } %>
+            <a href="products">products</a>
+            <a href="aboutus">AboutUs</a>
+            <%
+            if(udata!=null&&udata!=""){
+                 %>     <a href="logoutme">Logout</a> <%    
+            }else{
+                  %> <a href="login">Login</a> <%
+            }
+            %>
+
+    </header>
+    <p>
+    <h1>About Us</h1>
+    </p>
+    <div>
+        <fieldset>
+            As people, we must fly for a variety of reasons for survival, for work, and for pleasure.<br><br>
+            A house is never small or empty, when filled with love.<br><br>
+            With the advent of technology, we assume that by making House holds more available to all, we can make it more
+            enjoyable for all.<br><br>
+            Send us your Precious feedback to allow us to Provide you the best Service!
+        <a href="contactus">
+            <center><footer class="b2">
+            <button id='registration' type='submit'><a href="contactus"><h2>Feedback</h2></a></button>
+            <br><br>
+        </footer>   </center>
+        </fieldset>
+    </div>
+
+</body>
+
+</html>
