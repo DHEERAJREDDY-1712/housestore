@@ -9,7 +9,7 @@ res.render('login',{udata:""});
 });
 
 //to setup a template engine
-app.set('view engine','ejs');
+app.set('view engine','ejs')
 
 app.use(session({
     secret : 'nothing',
